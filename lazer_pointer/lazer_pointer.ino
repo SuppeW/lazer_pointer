@@ -11,6 +11,7 @@ Servo servo;
  const int laser_pin = 6; //laser pin
  const int servo_pin = 8; //servo pin
  const int led_pin = 13; //led pin
+ const int buttonVal = 0; //trykketeller
 
 
 void setup() {
@@ -36,8 +37,11 @@ void loop() {
   
   buttonVal = digitalRead(button_pin);
   if(buttonVal == HIGH){
-    digitalWrite(laser_pin, HIGH);
+//    digitalWrite(laser_pin, HIGH);
     digitalWrite(led_pin, HIGH);
+    buttonVal++
+  }else if(buttonVal % 2 == 0){
+    digitalWrite(laser_pin, HIGH);
   }else{
     digitalWrite(laser_pin, LOW);
     digitalWrite(led_pin, LOW);
